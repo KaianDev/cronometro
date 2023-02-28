@@ -6,6 +6,7 @@ body {
     margin: 0;
     box-sizing: content-box;
     font-size: 25px;
+    font-family: 'Exo 2';
 }
 h1 {
     font-family: "Exo 2";
@@ -24,10 +25,18 @@ main {
     
 }
 
-p {
+.ass {
     font-size: 1.2rem;
-    font-family: 'Exo 2';
     color: white;
+}
+
+#res {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+#res p {
+    margin: 2px;
+    font-size: 1.1rem;
 }
 
 .container {
@@ -35,7 +44,7 @@ p {
     flex-direction: column;
     text-align: center;
     background-color: white;
-    height: 18rem;
+    min-height: 18rem;
     width: 30rem;
     align-items: center;
     border-radius: 15px;
@@ -67,6 +76,10 @@ button {
     background-color: rgb(175, 30, 122);
 }
 
+.marcar:hover {
+    background-color: rgb(224, 104, 34);
+}
+
 .stop:hover {
     background-color: rgb(175, 30, 30);
 }
@@ -74,7 +87,7 @@ button {
 @media (max-width: 600px) {
     .container {
         width: max(90%);
-        height: 18rem;
+        min-height: 18rem;
     }
 
     button {
