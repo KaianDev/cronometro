@@ -58,8 +58,7 @@ function doisDigitos(digito) {
     }
 }
 function cron() {
-    sec++;
-    segundo.innerHTML = doisDigitos(sec);
+    sec++; 
     if (sec == 60) {
         min++;
         sec = 0;
@@ -70,6 +69,7 @@ function cron() {
             hora.innerHTML = doisDigitos(hr);
         }
     }
+    segundo.innerHTML = doisDigitos(sec);
 }
 
 function testeClick() {
