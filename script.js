@@ -31,7 +31,7 @@ function start() {
 
 function pause() {
     clearInterval(intervalo);
-    iniciar.innerHTML = 'Reiniciar'
+    iniciar.innerHTML = 'Continuar'
     pauserClicado = true;
     console.log(pauserClicado);
     testeClick();
