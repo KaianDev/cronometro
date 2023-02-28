@@ -1,10 +1,14 @@
 let iniciar = document.querySelector('.start');
 let pausar = document.querySelector('.pause');
+let marcar = document.querySelector('.marcar');
 let parar = document.querySelector('.stop');
 let ass = document.querySelector('p');
 let hora = document.querySelector('.hora');
 let minuto = document.querySelector('.min');
 let segundo = document.querySelector('.sec');
+let res = document.querySelector('#res');
+
+let c = 1; // Contador de voltas
 
 //Váriaveis do cronometro
 let hr = 0;
@@ -21,10 +25,11 @@ let pararClicado = false;
 //Definição padrão para deixar o botão oculto de Pause e Stop
 pausar.style.display = 'none'; 
 parar.style.display = 'none';
+marcar.style.display = 'none';
 
 function start() {
-    iniciarClicado = true;
     cron();
+    iniciarClicado = true;
     intervalo = setInterval(cron, 1000);
     testeClick();
 }
@@ -37,6 +42,8 @@ function pause() {
     testeClick();
 }
 
+
+
 function stopT() {
     clearInterval(intervalo);
     hora.innerHTML = '00';
@@ -47,6 +54,8 @@ function stopT() {
     hr = 0;
     iniciar.innerHTML = 'Iniciar';
     pararClicado = true;
+    res.innerHTML = '';
+    c = 1;
     testeClick();
 }
 
@@ -58,7 +67,7 @@ function doisDigitos(digito) {
     }
 }
 function cron() {
-    sec++; 
+    sec++;
     if (sec == 60) {
         min++;
         sec = 0;
@@ -75,13 +84,15 @@ function cron() {
 function testeClick() {
     if (iniciarClicado == true) {
         iniciar.style.display = 'none';
-        pausar.style.display = 'inline-block'
+        pausar.style.display = 'inline-block';
+        marcar.style.display = 'inline-block';
         parar.style.display = 'none';
         iniciarClicado = false;
     }
     if (pauserClicado == true) {
         iniciar.style.display = 'inline-block';
         pausar.style.display = 'none';
+        marcar.style.display = 'none';
         parar.style.display = 'inline-block';
         pauserClicado = false;
     }
@@ -93,9 +104,16 @@ function testeClick() {
     }
 }
 
+function marcarT(){
+   let newItem = document.createElement('p');
+   newItem.innerHTML = `<strong>🚩${doisDigitos(c)}</strong> ${doisDigitos(hr)}:${doisDigitos(min)}:${doisDigitos(sec)}`;
+   res.prepend(newItem);
+   c++;
+}
 
 ass.innerHTML += ' - ' + new Date().getFullYear()
 
 iniciar.addEventListener('click', start);
 pausar.addEventListener('click', pause);
+marcar.addEventListener('click', marcarT);
 parar.addEventListener('click', stopT);
