@@ -60,11 +60,11 @@ function doisDigitos(digito) {
 function cron() {
     sec++;
     segundo.innerHTML = doisDigitos(sec);
-    if (sec == 60) {
+    if (sec == 59) {
         sec = 0;
         min++;
         minuto.innerHTML = doisDigitos(min);
-        if (min == 60) {
+        if (min == 59) {
             min = 0;
             hr++
             hora.innerHTML = doisDigitos(hr);
